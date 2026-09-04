@@ -11,6 +11,13 @@ too far from their own goal while the ball threatens it, with no teammate
 covering). More detectors (boost management, rotation) are planned but not
 built yet.
 
+A tip looks like this:
+
+```
+At 1:32 you were badly out of position for 21.5s, 850uu from your own goal
+while the ball threatened it (82% threat) with no teammate covering.
+```
+
 ## How it works
 
 ```
@@ -41,8 +48,7 @@ training set of "bad positioning" replays that doesn't exist.
 
 ## Requirements
 
-- Python 3.14 (see `venv/pyvenv.cfg`; earlier 3.x likely works too but isn't
-  tested here)
+- Python 3.14 (earlier 3.x likely works too but isn't tested here)
 - `tools/rrrocket.exe`, a prebuilt Windows binary of
   [rrrocket](https://github.com/nickbabcock/rrrocket) (already vendored in
   this repo under `tools/`). It's not a Python package and isn't put on
@@ -70,7 +76,7 @@ from coaching.exposure_tips import generate_tips
 
 raw_json, snapshots = process_replay("data/raw/some-match.replay")
 tips = generate_tips(snapshots)
-# {"player name": ["At 1:32, spent 21.5s far from goal with the ball ...", ...]}
+# {"player name": ["At 1:32 you were badly out of position for 21.5s, ...", ...]}
 ```
 
 Batch-parse a directory of replays (dev/testing only, used to validate the
